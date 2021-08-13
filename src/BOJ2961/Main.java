@@ -3,7 +3,6 @@ package BOJ2961;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.PriorityQueue;
 
 public class Main {
 
@@ -24,7 +23,8 @@ public class Main {
 		for(int i = 0; i < N; i++)
 			input[i] = i;
 		
-		PriorityQueue<Integer> answer = new PriorityQueue<>();
+		// PriorityQueue<Integer> answer = new PriorityQueue<>();
+		int answer = Integer.MAX_VALUE;
 		for (int i = 1; i <= N; i++) {
 			int[] p = new int[N];
 			int cnt = 0;
@@ -37,12 +37,13 @@ public class Main {
 						sourValue *= sour[j];
 						bitterValue += bitter[j];
 					}
-				answer.offer(Math.abs(bitterValue - sourValue));
+				// answer.offer(Math.abs(bitterValue - sourValue));
+				answer = Math.min(answer, Math.abs(bitterValue-sourValue));
 			} while (nextPermutation(p));
 		}
 		
-		System.out.println(answer.poll());
-
+		// System.out.println(answer.poll());
+		System.out.println(answer);
 	}
 	
 	private static boolean nextPermutation(int[] inputs) {
